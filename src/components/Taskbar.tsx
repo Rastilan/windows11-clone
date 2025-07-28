@@ -58,23 +58,38 @@ const [weatherAppOpen, setWeatherAppOpen] = useState(false);
     return (
     <div className="h-[5vh] w-screen bg-black/40 flex items-center justify-between px-4 z-50">
         {/* Left side */}
-        <section className="flex-shrink-0 text-sm text-white">
+        <section className="flex-shrink-0 text-sm text-white flex-[1]">
             <div onClick={() => setWeatherAppOpen((open) => !open)} 
             className="
                 relative inline-block w-[100px] h-[100%] text-center
                 cursor-pointer   
                 hover:bg-white/10
                 ">
-                {weather.temperature !== undefined
-                ? `${weather.temperature}°F`
-                : "Loading..."}
+                {weather.temperature !== undefined ? (
+                <div className="grid grid-cols-[auto_1fr] gap-2 items-center">
+                    {/* Weather icon on the left */}
+                    <img
+                    src={weather.icon}
+                    alt="Weather icon"
+                    className="w-6 h-6"
+                    />
+
+                    {/* Temp and condition stacked vertically */}
+                    <div className="flex flex-col">
+                    <span className="font-semibold">{weather.temperature}°F</span>
+                    </div>
+                </div>
+                ) : (
+                "Loading..."
+                )}
+
                 
 
             </div>
         </section>
 
         {/* Center */}
-        <section className="flex-1 flex justify-center items-center h-full">
+        <section className="flex-[8] flex justify-center items-center h-full">
             <div
             onClick={() => setStartMenuOpen((open) => !open)}
             tabIndex={0}
@@ -95,7 +110,7 @@ const [weatherAppOpen, setWeatherAppOpen] = useState(false);
         </section>
 
         {/* Right side */}
-        <section className="flex-shrink-0 text-sm text-white">
+        <section className="flex-shrink-0 text-sm text-white flex-[1]">
             More icons – apps – time
         </section>
 
