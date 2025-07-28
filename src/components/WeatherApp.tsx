@@ -1,5 +1,6 @@
 // StartMenu.tsx
 import React, { useRef, useEffect } from "react";
+const API_KEY = import.meta.env.WEATHER_API_KEY;
 
 export default function WeatherApp({
   isOpen,
